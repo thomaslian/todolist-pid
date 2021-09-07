@@ -5,7 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
+
 export class HomePage implements OnInit {
+
+  tasks: Array<String> = ["Make breakfast", "Make dinner", "Buy milk"];
 
   constructor() { }
 
