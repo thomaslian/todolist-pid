@@ -1,0 +1,18 @@
+<ion-list lines="full">
+  <ion-list-header color="primary">
+    {{headerText}}
+  </ion-list-header>
+  <ion-item-sliding *ngFor="let task of tasks">
+    <ion-item-options side="start" *ngIf="markFinished">
+      <ion-item-option (click)="markTaskFinished(task)" color="secondary">Mark finished</ion-item-option>
+    </ion-item-options>
+
+    <ion-item>
+      <ion-label>{{task}}</ion-label>
+    </ion-item>
+
+    <ion-item-options side="end" *ngIf="makeDelete">
+      <ion-item-option (click)="deleteTask(task)" color="danger">Delete</ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
