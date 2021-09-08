@@ -7,6 +7,18 @@
 
 
 <ion-content [fullscreen]="true">
-  <app-list headerText="Todo" [tasks]="tasks" [markFinished]="true" [makeDelete]="true" (deleteTaskEvent)="deleteTask($event)" (markFinishedEvent)="markFinished($event)"></app-list>
-  <app-list headerText="Finished" [tasks]="finishedTasks" [makeDelete]="true" (deleteTaskEvent)="deleteFinishedTask($event)"></app-list>
+  <div id="input-task">
+    <ion-item>
+      <ion-label position="floating" autocapitalize="true" color="dark">{{inputText}}</ion-label>
+      <ion-input [(ngModel)]="taskInput"></ion-input>
+    </ion-item>
+    <ion-button (click)="addTask()" class="ion-align-items-center" color="primary">{{inputButtonText}}</ion-button>
+  </div>
+
+  <app-list headerText="Todo" [tasks]="tasks" [markFinished]="true" [makeDelete]="true" [makeEdit]="true"
+    (deleteTaskEvent)="deleteTask($event)" (markFinishedEvent)="markFinished($event)"
+    (editTaskEvent)="triggerEditOneTask($event)"></app-list>
+  <app-list headerText="Finished" [tasks]="finishedTasks" [makeDelete]="true"
+    (deleteTaskEvent)="deleteFinishedTask($event)"></app-list>
+
 </ion-content>

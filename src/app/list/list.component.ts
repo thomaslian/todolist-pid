@@ -11,9 +11,11 @@ export class ListComponent implements OnInit {
   @Input() markFinished?: boolean;
   @Input() markTodo?: boolean;
   @Input() makeDelete?: boolean;
+  @Input() makeEdit?: boolean;
 
   @Output() deleteTaskEvent = new EventEmitter<String>();
   @Output() markFinishedEvent = new EventEmitter<String>();
+  @Output() editTaskEvent = new EventEmitter<String>();
 
   constructor() { }
 
@@ -26,6 +28,10 @@ export class ListComponent implements OnInit {
 
   deleteTask(task: String) {
     this.deleteTaskEvent.emit(task);
+  }
+
+  editTask(task: String) {
+    this.editTaskEvent.emit(task);
   }
 
 }

@@ -3,8 +3,9 @@
     {{headerText}}
   </ion-list-header>
   <ion-item-sliding *ngFor="let task of tasks">
-    <ion-item-options side="start" *ngIf="markFinished">
-      <ion-item-option (click)="markTaskFinished(task)" color="secondary">Mark finished</ion-item-option>
+    <ion-item-options side="start" *ngIf="markFinished || makeEdit">
+      <ion-item-option *ngIf="markFinished" (click)="markFinishedEvent.emit(task)" color="secondary">Mark finished</ion-item-option>
+      <ion-item-option *ngIf="makeEdit" (click)="editTask(task)" color="warning">Edit task</ion-item-option>
     </ion-item-options>
 
     <ion-item>
