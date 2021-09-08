@@ -23,25 +23,18 @@ export class HomePage implements OnInit {
   }
 
   addTask() {
-    if (!this.editTask) {
-      this.tasks.push(this.taskInput);
-    } else {
+    if (this.editTask) {
       this.tasks.forEach((task: String, i) => {
         if (task === this.originalTask) {
           this.tasks[i] = this.taskInput;
         }
       });
+    } else {
+      this.tasks.push(this.taskInput);
     }
 
     this.taskInput = "";
     this.editTask = false;
-    this.setInputNames();
-  }
-
-  triggerEditOneTask(task) {
-    this.editTask = true;
-    this.originalTask = task;
-    this.taskInput = task;
     this.setInputNames();
   }
 
@@ -58,13 +51,20 @@ export class HomePage implements OnInit {
     this.finishedTasks = this.finishedTasks.filter((t: String) => t !== task);
   }
 
+  triggerEditOneTask(task) {
+    this.editTask = true;
+    this.originalTask = task;
+    this.taskInput = task;
+    this.setInputNames();
+  }
+
   setInputNames() {
-    if (!this.editTask) {
-      this.inputText = "Add new task:";
-      this.inputButtonText = "Add task";
-    } else {
+    if (this.editTask) {
       this.inputText = "Edit task:";
       this.inputButtonText = "Edit";
+    } else {
+      this.inputText = "Add new task:";
+      this.inputButtonText = "Add task";
     }
   }
 }

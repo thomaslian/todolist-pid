@@ -9,7 +9,6 @@ export class ListComponent implements OnInit {
   @Input() headerText: String;
   @Input() tasks: Array<String>;
   @Input() markFinished?: boolean;
-  @Input() markTodo?: boolean;
   @Input() makeDelete?: boolean;
   @Input() makeEdit?: boolean;
 
@@ -21,17 +20,4 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  markTaskFinished(task: String) {
-    this.markFinishedEvent.emit(task);
-  }
-
-  deleteTask(task: String) {
-    this.deleteTaskEvent.emit(task);
-  }
-
-  editTask(task: String) {
-    this.editTaskEvent.emit(task);
-  }
-
 }
