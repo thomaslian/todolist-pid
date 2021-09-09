@@ -24,11 +24,8 @@ export class HomePage implements OnInit {
 
   addTask() {
     if (this.editTask) {
-      this.tasks.forEach((task: String, i: number) => {
-        if (task === this.originalTask) {
-          this.tasks[i] = this.taskInput;
-        }
-      });
+      const indexOfTask = this.tasks.findIndex((task: String) => task === this.originalTask);
+      this.tasks[indexOfTask] = this.taskInput;
     } else {
       this.tasks.push(this.taskInput);
     }

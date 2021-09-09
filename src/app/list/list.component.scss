@@ -5,3 +5,19 @@ ion-list-header {
 ion-list ion-item {
     --background: #303030;
 }
+
+ion-list ion-item:active {
+    animation-name: shake;
+    animation-duration: 1s;
+}
+
+ion-list ion-item-sliding {
+    background-color: red;
+}
+
+@keyframes shake {
+    0%   {left:0px;}
+    25%  {left:50px;}
+    75%  {left:-50px;}
+    100% {left:0px;}
+}
