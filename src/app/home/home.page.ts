@@ -13,13 +13,10 @@ export class HomePage implements OnInit {
   taskInput: String;
   editTask: Boolean = false;
   originalTask: String;
-  inputText: String;
-  inputButtonText: String;
 
   constructor() { }
 
   ngOnInit() {
-    this.setInputNames();
   }
 
   addTask() {
@@ -32,7 +29,6 @@ export class HomePage implements OnInit {
 
     this.taskInput = "";
     this.editTask = false;
-    this.setInputNames();
   }
 
   markFinished(task: String) {
@@ -52,17 +48,6 @@ export class HomePage implements OnInit {
     this.editTask = true;
     this.originalTask = this.taskInput = task;
     this.taskInput = task;
-    this.setInputNames();
-  }
-
-  setInputNames() {
-    if (this.editTask) {
-      this.inputText = "Edit task:";
-      this.inputButtonText = "Edit";
-    } else {
-      this.inputText = "Add new task:";
-      this.inputButtonText = "Add task";
-    }
   }
 
   /**

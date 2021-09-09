@@ -9,7 +9,8 @@
 <ion-content [fullscreen]="true">
   <div id="input-task">
     <ion-input [(ngModel)]="taskInput" placeholder="Buy bread..." autocapitalize="true"></ion-input>
-    <ion-button (click)="addTask()" class="ion-align-items-center" color="primary">{{inputButtonText}}</ion-button>
+    <ion-button (click)="addTask()" class="ion-align-items-center" color="primary">{{editTask ? "Edit" : "Add task"}}
+    </ion-button>
   </div>
 
   <app-list headerText="Todo" [tasks]="tasks" [markFinished]="true" [makeDelete]="true" [makeEdit]="true"
