@@ -24,7 +24,7 @@ export class HomePage implements OnInit {
 
   addTask() {
     if (this.editTask) {
-      this.tasks.forEach((task: String, i) => {
+      this.tasks.forEach((task: String, i: number) => {
         if (task === this.originalTask) {
           this.tasks[i] = this.taskInput;
         }
@@ -38,22 +38,22 @@ export class HomePage implements OnInit {
     this.setInputNames();
   }
 
-  markFinished(task) {
+  markFinished(task: String) {
     this.deleteTask(task);
     this.finishedTasks.push(task);
   }
 
-  deleteTask(task) {
-    this.tasks = this.tasks.filter((t: String) => t !== task);
+  deleteTask(task: String) {
+    this.tasks = this.removeOneFromArray(task, this.tasks)
   }
 
-  deleteFinishedTask(task) {
-    this.finishedTasks = this.finishedTasks.filter((t: String) => t !== task);
+  deleteFinishedTask(task: String) {
+    this.finishedTasks = this.removeOneFromArray(task, this.finishedTasks);
   }
 
-  triggerEditOneTask(task) {
+  triggerEditOneTask(task: String) {
     this.editTask = true;
-    this.originalTask = task;
+    this.originalTask = this.taskInput = task;
     this.taskInput = task;
     this.setInputNames();
   }
@@ -66,5 +66,15 @@ export class HomePage implements OnInit {
       this.inputText = "Add new task:";
       this.inputButtonText = "Add task";
     }
+  }
+
+  /**
+   * Removes a task from an array of tasks
+   * @param task Task that should be removed
+   * @param tasks Array that contains the task that should be removed
+   * @returns Array without the task passed in the parameters
+   */
+  private removeOneFromArray(task: String, tasks: Array<String>): Array<String> {
+    return tasks.filter((t: String) => t !== task);
   }
 }
